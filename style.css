@@ -1,140 +1,251 @@
-.checked {
-    text-decoration: line-through;
-    color: blue;
+
+/* ===== Variáveis ===== */
+:root {
+    --fundo: #121212;
+    --superficie: #1c1c22;
+    --superficie-hover: #25252d;
+    --texto: #f2f2f2;
+    --texto-suave: #b8b8c0;
+    --azul: #0077ff;
+    --azul-claro: #00b7ff;
+    --borda: #ffffff1d;
+    --vermelho: #ff4d5a;
 }
-.close{
-    cursor: pointer;
-    color: red;
-    margin-left: 10px;
-}
-@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap');
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1c1c1c, #0d0d0d);
-    color: #ffffff;
+
+/* ===== Reset ===== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    padding: 20px;
 }
+
+/* ===== Container ===== */
 .container {
-    background-color: #242424;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-    padding: 30px;
-    width: 400px;
+    width: 100%;
+    max-width: 500px;
+
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+
+    padding: 32px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    animation: aparecer 0.5s ease;
+}
+
+/* ===== Cabeçalho ===== */
+header {
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    animation: slideIn 0.5s ease forwards;
+    margin-bottom: 30px;
 }
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+
 h1 {
-    font-size: 30px;
-    color: #1e90ff;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    animation: fadeIn 0.5s ease;
+    font-size: 27px;
+    color: var(--azul-claro);
+    margin-bottom: 10px;
 }
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+header p {
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.5;
 }
+
+/* ===== Formulário ===== */
 label {
-    font-size: 16px;
-    color: #b0bec5;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+
+    color: var(--texto-suave);
+    font-size: 14px;
+    font-weight: 600;
 }
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
 input[type="text"] {
-    width: 90%;
-    max-width: 350px;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #555;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: #333;
-    color: #ffffff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    min-width: 0;
+
+    padding: 13px;
+
+    background: #121212;
+    color: var(--texto);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
 }
+
 input[type="text"]:focus {
-    border-color: #1e90ff;
     outline: none;
-    box-shadow: 0 0 8px rgba(30, 144, 255, 0.5);
-    transform: scale(1.02);
-    transition: transform 0.2s ease;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.15);
 }
-input[type="text"]:hover {
-    border-color: #1e90ff;
+
+input::placeholder {
+    color: #777780;
 }
+
+/* ===== Botão ===== */
 button {
-    background-color: #4a90e2;
-    color: #ffffff;
+    padding: 12px 18px;
+
+    background: var(--azul);
+    color: white;
+
     border: none;
-    border-radius: 6px;
-    padding: 12px 20px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-weight: bold;
+
+    transition: 0.3s;
 }
+
 button:hover {
-    background-color: #5a99e3;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: var(--azul-claro);
+    transform: translateY(-2px);
 }
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ===== Lista de tarefas ===== */
 .fieldset {
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+fieldset {
     border: none;
 }
+
 legend {
-    font-size: 18px;
-    color: #1e90ff;
-    font-weight: bold;
-    text-align: left;
-    padding-left: 5px;
+    color: var(--texto);
+    font-size: 17px;
+    font-weight: 600;
+
+    margin-bottom: 15px;
 }
+
 ul {
     list-style: none;
-    padding: 0;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+/* ===== Itens ===== */
 li {
-    background: #444;
-    border-radius: 6px;
-    margin: 8px 0;
-    padding: 12px;
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 14px;
+
+    background: #25252d;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    color: var(--texto);
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+    animation: aparecer 0.3s ease;
 }
-li:nth-child(even) {
-    animation-delay: 0.2s;
-}
-li:nth-child(odd) {
-    animation-delay: 0.4s;
-}
+
 li:hover {
-    background: #555;
-    transform: translateY(-3px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: var(--superficie-hover);
+    border-color: #0077ff70;
+    transform: translateX(3px);
+}
+
+/* ===== Tarefa concluída ===== */
+li.checked {
+    color: var(--texto-suave);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* ===== Botão de excluir ===== */
+.close {
+    flex-shrink: 0;
+
+    color: var(--vermelho);
+    font-size: 21px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0 5px;
+
+    transition: 0.2s;
+}
+
+.close:hover {
+    color: #ff7b85;
+    transform: scale(1.2);
+}
+
+/* ===== Animação ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 18px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    li {
+        padding: 12px;
+    }
 }
